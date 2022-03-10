@@ -38,9 +38,23 @@ function CalcularPrecioDescuento() {
 
 }
 
+function ComprobarCupon(Cup){
+
+    if(Cup =="Navi"){
+        Cup = parseInt(20);
+    }else if (Cup == "Joel"){
+        Cup = parseInt(25);
+    }else if (Cup == "Gaaa"){
+        Cup = parseInt(50);
+    }
+
+    return Cup
+}
+
 function CalcularPrecioCupon(){
     const Cupon = document.getElementById("InputCupon");
-    const Cup = parseInt(Cupon.value);
+    const Cup = Cupon.value;
+
 
     const Precio = document.getElementById("InputPrecio");
     const Pre = parseInt(Precio.value);
@@ -48,7 +62,9 @@ function CalcularPrecioCupon(){
     const Descuento = document.getElementById("InputDescuento");
     const Des = parseInt(Descuento.value);
 
-    const Calcular = CalcularPrecioConDescuentoConCupon(Pre,Des,Cup)
+    const Comprobar = ComprobarCupon(Cup);
+
+    const Calcular = CalcularPrecioConDescuentoConCupon(Pre,Des,Comprobar)
 
     const Cupo = document.getElementById("ResultadoCupon")
     Cupo.innerText = "El precio con descuento y cupon es : $" + Calcular 
