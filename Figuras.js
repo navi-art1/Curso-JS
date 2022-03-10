@@ -19,9 +19,34 @@ console.group("Triangulo")
 function perimetroTriangulo(lado1,lado2,lado3) { 
     return (lado1+lado2+lado3);
 }
+
 function areaTriangulo(base,altura){
     return base*altura /2 ;
 }
+
+
+function comparar(lado1,lado2,lado3){
+    if (lado1 == lado2 && lado1 != lado3){
+        var lados = [lado1, lado3];
+    }else if (lado1 == lado3 && lado1 != lado2){
+        var lados = [lado1, lado2];
+    }else if (lado2 == lado3 && lado2 != lado1){
+        var lados = [lado2,lado1];
+    }else if (lado1 == lado2 && lado1 ==lado3){
+        var lados = [lado1,lado1];
+    }
+    return lados
+}
+
+function alturaTriangulo(lado1,lado2){
+    
+    if(lado1>lado2/2){
+        return Math.sqrt(lado1*lado1-lado2*lado2/4) 
+    }else if(lado2>lado1/2){
+        return Math.sqrt(lado2*lado2-lado1*lado1/4) 
+    } 
+}
+
 
 console.groupEnd();
 
@@ -102,4 +127,21 @@ function CalcularAreaCirculo(){
 
     const Area = areaCirculo(Radio);
     alert(Area)
+}
+
+function CalcularAlturaTriangulo(){
+
+    const inputLado1 = document.getElementById("InputLado1");
+    const lado1 = parseInt(inputLado1.value);
+
+    const inputLado2 = document.getElementById("InputLado2");
+    const lado2 = parseInt(inputLado2.value);
+
+    const inputLado3 = document.getElementById("InputLado3");
+    const lado3 = parseInt(inputLado3.value);
+
+    const Lados = comparar(lado1,lado2,lado3);
+    const altura = alturaTriangulo(Lados[0],Lados[1])
+
+    alert(altura);
 }
